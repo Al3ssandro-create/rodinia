@@ -118,8 +118,13 @@ void bpnn_train_cuda(BPNN *net, float *eo, float *eh)
   cudaMemcpy(input_cuda, net->input_units, (in + 1) * sizeof(float), cudaMemcpyHostToDevice);
   cudaMemcpy(input_hidden_cuda, input_weights_one_dim, (in + 1) * (hid + 1) * sizeof(float), cudaMemcpyHostToDevice);
 
-  
-  
+  //modified
+  printf("here\n");
+  //error here
+  printf("Grid dimensions: %d x %d x %d\n", grid.x, grid.y, grid.z);
+  printf("Block dimensions: %d x %d x %d\n", threads.x, threads.y, threads.z);
+  //modified
+
   bpnn_layerforward_CUDA<<< grid, threads >>>(input_cuda,
 	                                          output_hidden_cuda,
 											  input_hidden_cuda,
