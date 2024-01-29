@@ -121,6 +121,9 @@ void bpnn_train_cuda(BPNN *net, float *eo, float *eh)
   //modified
   printf("here\n");
   //error here
+  int blocksPerDimension = sqrt(num_blocks) + 1;  // Compute the number of blocks per dimension
+  dim3 grid(blocksPerDimension, blocksPerDimension, 1);  // Create a 2D grid
+  dim3 threads(16, 16, 1);  // Keep the same number of threads per block
   printf("Grid dimensions: %d x %d x %d\n", grid.x, grid.y, grid.z);
   printf("Block dimensions: %d x %d x %d\n", threads.x, threads.y, threads.z);
   //modified
