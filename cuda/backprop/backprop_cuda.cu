@@ -78,8 +78,11 @@ void bpnn_train_cuda(BPNN *net, float *eo, float *eh)
   float *input_weights_one_dim;
   float *input_weights_prev_one_dim;
   num_blocks = in / 16;  
-  dim3  grid( 1 , num_blocks);
-  dim3  threads(16 , 16);
+  // modified
+  int blocksPerDimension = sqrt(num_blocks) + 1;  // Compute the number of blocks per dimension
+  dim3 grid(blocksPerDimension, blocksPerDimension, 1);  // Create a 2D grid
+  dim3 threads(16, 16, 1);  // Keep the same number of threads per block
+  // modified
   
   input_weights_one_dim = (float *) malloc((in + 1)* (hid + 1) * sizeof(float));
   input_weights_prev_one_dim = (float *) malloc((in + 1)* (hid + 1) * sizeof(float));
@@ -121,9 +124,6 @@ void bpnn_train_cuda(BPNN *net, float *eo, float *eh)
   //modified
   printf("here\n");
   //error here
-  int blocksPerDimension = sqrt(num_blocks) + 1;  // Compute the number of blocks per dimension
-  dim3 grid(blocksPerDimension, blocksPerDimension, 1);  // Create a 2D grid
-  dim3 threads(16, 16, 1);  // Keep the same number of threads per block
   printf("Grid dimensions: %d x %d x %d\n", grid.x, grid.y, grid.z);
   printf("Block dimensions: %d x %d x %d\n", threads.x, threads.y, threads.z);
   //modified
