@@ -41,7 +41,7 @@ void run(int argc, char** argv);
 
 
 void 
-fatal(char *s)
+fatal(const char *s)
 {
 	fprintf(stderr, "error: %s\n", s);
 
