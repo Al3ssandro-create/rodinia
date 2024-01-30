@@ -13,7 +13,20 @@
 #define BUCKET_BLOCK_MEMORY		(DIVISIONS * BUCKET_WARP_N)
 #define BUCKET_BAND				128
 
-texture<float, 1, cudaReadModeElementType> texPivot; 
+cudaTextureObject_t texPivot;
+cudaResourceDesc resDesc;
+memset(&resDesc, 0, sizeof(resDesc));
+resDesc.resType = cudaResourceTypeLinear;
+resDesc.res.linear.devPtr = d_pivot;
+resDesc.res.linear.desc.f = cudaChannelFormatKindFloat;
+resDesc.res.linear.desc.x = 32; // bits per channel
+resDesc.res.linear.sizeInBytes = size;
+
+cudaTextureDesc texDesc;
+memset(&texDesc, 0, sizeof(texDesc));
+texDesc.readMode = cudaReadModeElementType;
+
+cudaCreateTextureObject(&texPivot, &resDesc, &texDesc, NULL);
 
 __device__ int addOffset(volatile unsigned int *s_offset, unsigned int data, unsigned int threadTag){
     unsigned int count;
