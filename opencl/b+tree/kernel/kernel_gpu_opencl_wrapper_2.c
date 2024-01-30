@@ -89,7 +89,7 @@ kernel_gpu_opencl_wrapper_2(knode *knodes,
 	//	INITIAL DRIVER OVERHEAD
 	//====================================================================================================100
 
-	// cudaThreadSynchronize();
+	// cudaDeviceSynchronize();
 
 	//====================================================================================================100
 	//	COMMON VARIABLES

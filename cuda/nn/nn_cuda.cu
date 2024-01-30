@@ -110,13 +110,13 @@ int main(int argc, char* argv[])
 	// Scaling calculations - added by Sam Kauffman
 	cudaDeviceProp deviceProp;
 	cudaGetDeviceProperties( &deviceProp, 0 );
-	cudaThreadSynchronize();
+	cudaDeviceSynchronize();
 	unsigned long maxGridX = deviceProp.maxGridSize[0];
 	unsigned long threadsPerBlock = min( deviceProp.maxThreadsPerBlock, DEFAULT_THREADS_PER_BLOCK );
 	size_t totalDeviceMemory;
 	size_t freeDeviceMemory;
 	cudaMemGetInfo(  &freeDeviceMemory, &totalDeviceMemory );
-	cudaThreadSynchronize();
+	cudaDeviceSynchronize();
 	unsigned long usableDeviceMemory = freeDeviceMemory * 85 / 100; // 85% arbitrary throttle to compensate for known CUDA bug
 	unsigned long maxThreads = usableDeviceMemory / 12; // 4 bytes in 3 vectors per thread
 	if ( numRecords > maxThreads )
@@ -165,7 +165,7 @@ int main(int argc, char* argv[])
 #endif
 
     euclid<<< gridDim, threadsPerBlock >>>(d_locations,d_distances,numRecords,lat,lng);
-    cudaThreadSynchronize();
+    cudaDeviceSynchronize();
 
 #ifdef  TIMING
     gettimeofday(&tv_kernel_end, NULL);

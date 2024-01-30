@@ -255,7 +255,7 @@ kernel_gpu_opencl_wrapper(	par_str par_cpu,
 	//	INITIAL DRIVER OVERHEAD
 	//====================================================================================================100
 
-	// cudaThreadSynchronize();
+	// cudaDeviceSynchronize();
 
 	//====================================================================================================100
 	//	EXECUTION PARAMETERS

@@ -308,7 +308,7 @@ kernel_gpu_opencl_wrapper(	fp* image,											// input image
 	//	TRIGGERING INITIAL DRIVER OVERHEAD
 	//====================================================================================================100
 
-	// cudaThreadSynchronize();		// the above does it
+	// cudaDeviceSynchronize();		// the above does it
 
 	//======================================================================================================================================================150
 	// 	GPU VARIABLES

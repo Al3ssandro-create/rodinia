@@ -85,7 +85,7 @@ kernel_gpu_opencl_wrapper(	record *records,
 	//	INITIAL DRIVER OVERHEAD
 	//====================================================================================================100
 
-	// cudaThreadSynchronize();
+	// cudaDeviceSynchronize();
 
 	//====================================================================================================100
 	//	COMMON VARIABLES

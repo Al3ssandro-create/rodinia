@@ -17,7 +17,7 @@
     } }
 
 #  define cudaCheckAsyncError( msg ) {                                       \
-    cudaThreadSynchronize();                                                 \
+    cudaDeviceSynchronize();                                                 \
     cudaCheckError( msg );                                                   \
     }
 */

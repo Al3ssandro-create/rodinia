@@ -290,7 +290,7 @@ kernel_gpu_opencl_wrapper(	params_common common,
 	//	TRIGGERING INITIAL DRIVER OVERHEAD
 	//====================================================================================================100
 
-	// cudaThreadSynchronize();		// the above does it
+	// cudaDeviceSynchronize();		// the above does it
 
 	//======================================================================================================================================================150
 	//	GPU MEMORY ALLOCATION

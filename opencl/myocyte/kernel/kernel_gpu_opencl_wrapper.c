@@ -274,7 +274,7 @@ kernel_gpu_opencl_wrapper(	int xmax,
 	//	INITIAL DRIVER OVERHEAD
 	//====================================================================================================100
 
-	// cudaThreadSynchronize();
+	// cudaDeviceSynchronize();
 #ifdef  TIMING
 	gettimeofday(&tv_init_end, NULL);
 	tvsub(&tv_init_end, &tv_total_start, &tv);
