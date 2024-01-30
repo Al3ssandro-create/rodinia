@@ -2,7 +2,7 @@
 // This code is from the AIAA-2009-4001 paper
 
 //#include <cutil.h>
-#include <helper_cuda.h>
+#include "helper_cuda.h"
 #include <helper_timer.h>
 #include <iostream>
 #include <fstream>
