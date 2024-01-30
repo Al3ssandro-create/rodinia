@@ -3,7 +3,7 @@
 
 //#include <cutil.h>
 #include "helper_cuda.h"
-#include <helper_timer.h>
+#include "helper_timer.h"
 #include <iostream>
 #include <fstream>
 
