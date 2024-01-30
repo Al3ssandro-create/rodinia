@@ -19,7 +19,7 @@
 //====================================================================================================100
 //====================================================================================================100
 
-void write_graphics(	char* filename,
+void write_graphics(const char* filename,
 									fp* input, 
 									int data_rows, 
 									int data_cols, 
@@ -88,7 +88,7 @@ void write_graphics(	char* filename,
 //====================================================================================================100
 //====================================================================================================100
 
-void read_graphics(	char* filename,
+void read_graphics(const char* filename,
 									fp* input,
 									int data_rows, 
 									int data_cols,
