@@ -1,4 +1,4 @@
-include ~/rodinia_3.0/common/make.config
+include ~/rodinia/common/make.config
 
 CC := $(CUDA_DIR)/bin/nvcc
 
